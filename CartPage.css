@@ -1,4 +1,14 @@
-/* 基础：全局重置，避免預設 margin 影響版型 */
+/* 基础：全局重置 + RWD 友善 */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 html,
 body,
 #root {
@@ -9,6 +19,7 @@ body,
 
 body {
   background: #f5f5f5;
+  overflow-x: hidden; /* 防止小螢幕橫向溢出 */
 }
 
 .cart-page {
@@ -957,13 +968,14 @@ body {
     cursor: pointer;
   }
   
-  /* 底部優惠折扣條 */
+  /* 底部優惠折扣條（預留安全區域） */
   .footer-coupon-bar {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 64px;
     background: #fff;
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
   
   .footer-coupon-inner {
@@ -992,7 +1004,7 @@ body {
     font-size: 14px;
   }
   
-  /* 底部結帳欄 */
+  /* 底部結帳欄（固定底部 + 安全區域給有劉海/Home 條的裝置） */
   .cart-footer {
     position: fixed;
     left: 0;
@@ -1000,6 +1012,7 @@ body {
     bottom: 0;
     box-shadow: var(--shadow-footer);
     background: #fff;
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
   
   .cart-footer-inner {
@@ -1090,18 +1103,290 @@ body {
     color: #fff;
   }
   
-  /* 响应式简化（可按需要调整） */
+  /* ========== RWD 響應式 ========== */
+  /* 平板橫向 / 小桌面 */
   @media (max-width: 1200px) {
     .cart-main-inner {
       padding: 20px 24px;
     }
-  
+
     .cart-header {
       padding: 12px 24px;
     }
-  
+
     .cart-footer-inner,
     .footer-coupon-inner {
       padding: 12px 24px;
+    }
+
+    .cart-left {
+      width: 100%;
+      max-width: 784px;
+    }
+
+    .cart-brand-tabs {
+      width: 100%;
+      max-width: 770px;
+      flex-wrap: wrap;
+    }
+
+    .cart-toolbar {
+      width: 100%;
+    }
+  }
+
+  /* 平板直向 */
+  @media (max-width: 992px) {
+    .cart-main-inner {
+      padding: 16px 16px;
+    }
+
+    .cart-header {
+      padding: 10px 16px;
+      height: 56px;
+    }
+
+    .cart-header-left {
+      gap: 12px;
+    }
+
+    .cart-logo {
+      width: 64px;
+      height: 28px;
+    }
+
+    .cart-header-title {
+      font-size: 13px;
+    }
+
+    .cart-nav-item {
+      padding: 8px;
+      font-size: 13px;
+    }
+
+    .cart-content-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .cart-left {
+      max-width: none;
+      width: 100%;
+    }
+
+    .cart-right {
+      width: 100%;
+    }
+
+    .cart-item-body {
+      flex-wrap: wrap;
+    }
+
+    .cart-item-info {
+      flex-wrap: wrap;
+    }
+
+    .cart-item-main {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .cart-item-name {
+      white-space: normal;
+    }
+
+    .cart-item-right {
+      width: 100%;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .cart-footer-inner,
+    .footer-coupon-inner {
+      padding: 12px 16px;
+    }
+
+    .btn-primary-large {
+      width: 200px;
+      min-width: 160px;
+    }
+  }
+
+  /* 手機橫向 / 大手機 */
+  @media (max-width: 768px) {
+    .cart-main-container {
+      padding-top: 60px;
+      padding-bottom: 140px;
+    }
+
+    .cart-main-inner {
+      padding: 12px 12px;
+    }
+
+    .cart-header {
+      padding: 8px 12px;
+      height: 52px;
+    }
+
+    .cart-header-title {
+      font-size: 12px;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .cart-nav {
+      display: flex;
+    }
+
+    .cart-nav-item {
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+
+    .cart-user-info .user-name {
+      display: none;
+    }
+
+    .cart-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .cart-brand-tabs {
+      gap: 8px;
+      margin-bottom: 12px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      width: 100%;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cart-brand-tab {
+      flex-shrink: 0;
+      min-width: 140px;
+    }
+
+    .cart-item-card {
+      padding: 10px;
+    }
+
+    .cart-item-image {
+      width: 64px;
+      height: 64px;
+    }
+
+    .cart-item-main {
+      width: 100%;
+    }
+
+    .cart-item-right {
+      width: 100%;
+    }
+
+    .footer-coupon-bar {
+      bottom: calc(56px + env(safe-area-inset-bottom, 0));
+    }
+
+    .footer-coupon-inner {
+      padding: 10px 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .cart-footer-inner {
+      padding: 10px 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cart-footer-summary {
+      width: 100%;
+      order: 1;
+    }
+
+    .cart-footer .btn-primary-large {
+      width: 100%;
+      order: 2;
+    }
+
+    .btn-primary-large {
+      width: 100%;
+    }
+  }
+
+  /* 小手機 */
+  @media (max-width: 480px) {
+    .cart-main-container {
+      padding-bottom: 120px;
+    }
+
+    .cart-main-inner {
+      padding: 10px 10px;
+    }
+
+    .cart-header {
+      padding: 8px 10px;
+      height: 48px;
+    }
+
+    .cart-logo {
+      width: 56px;
+      height: 24px;
+    }
+
+    .cart-header .icon-circle {
+      width: 28px;
+      height: 28px;
+    }
+
+    .cart-brand-tab {
+      min-width: 120px;
+      padding: 8px;
+    }
+
+    .brand-name {
+      font-size: 12px;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+    }
+
+    .cart-item-body {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cart-item-image {
+      width: 100%;
+      max-width: 120px;
+      height: 120px;
+    }
+
+    .cart-item-name,
+    .cart-item-tag {
+      font-size: 13px;
+    }
+
+    .cart-item-total .amount {
+      font-size: 14px;
+    }
+
+    .footer-coupon-bar {
+      bottom: 52px;
+    }
+
+    .cart-footer-inner {
+      padding: 8px 10px;
+    }
+
+    .amount-large {
+      font-size: 14px;
     }
   }
