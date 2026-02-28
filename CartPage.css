@@ -40,14 +40,14 @@ body {
     --shadow-footer: 0 -4px 6px rgba(0, 0, 0, 0.08);
   }
   
-  /* Header */
+  /* Header - 黑色 */
   .cart-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 60px;
-    background: #fff;
+    background: #000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -71,14 +71,14 @@ body {
   .cart-logo {
     width: 80px;
     height: 32px;
-    background: #e1e1e1;
+    background: #333;
     border-radius: 4px;
   }
   
   .cart-header-title {
     font-size: 14px;
     font-weight: 600;
-    color: var(--gray-900);
+    color: #fff;
   }
   
   .cart-nav {
@@ -91,12 +91,17 @@ body {
     background: transparent;
     padding: 12px;
     font-size: 14px;
-    color: var(--gray-800);
+    color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
+  }
+  
+  .cart-nav-item:hover {
+    color: #fff;
   }
   
   .cart-nav-item--active {
     font-weight: 600;
+    color: #fff;
     text-decoration: underline;
   }
   
@@ -104,6 +109,13 @@ body {
     display: flex;
     align-items: center;
     gap: 4px;
+  }
+  
+  .cart-header .icon-arrow,
+  .cart-header .icon-arrow-down,
+  .cart-header .icon-arrow-right,
+  .cart-header .icon-arrow-up {
+    border-color: rgba(255, 255, 255, 0.7);
   }
   
   .icon-arrow,
@@ -143,11 +155,26 @@ body {
     font-size: 12px;
   }
   
+  .cart-header .link-primary {
+    background: none;
+    border: none;
+    color: #7dd3fc;
+    cursor: pointer;
+  }
+  
+  .cart-header .link-primary:hover {
+    color: #bae6fd;
+  }
+  
   .link-primary {
     background: none;
     border: none;
     color: var(--blue-600);
     cursor: pointer;
+  }
+  
+  .cart-header .user-name {
+    color: rgba(255, 255, 255, 0.7);
   }
   
   .user-name {
@@ -160,7 +187,7 @@ body {
     gap: 8px;
   }
   
-  .icon-circle {
+  .cart-header .icon-circle {
     width: 32px;
     height: 32px;
     border-radius: 999px;
@@ -168,6 +195,26 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+  
+  .cart-header .icon-circle:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  
+  .cart-header .icon-user::before {
+    content: "";
+    font-family: "Font Awesome 6 Pro", system-ui;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .cart-header .icon-cart::before {
+    content: "";
+    font-family: "Font Awesome 6 Pro", system-ui;
+    font-size: 14px;
+    color: #fff;
   }
   
   .icon-user::before {
