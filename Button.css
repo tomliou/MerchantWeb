@@ -1,0 +1,111 @@
+.fp-btn {
+  font-family: "PingFang TC", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+  white-space: nowrap;
+}
+
+.fp-btn--full {
+  width: 100%;
+}
+
+.fp-btn--large {
+  padding: 12px 20px;
+  font-size: 16px;
+}
+
+.fp-btn--small {
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+/* Tone colors */
+.fp-btn--filled.fp-btn--primary {
+  background-color: #ff9e1b;
+  border-color: #ff9e1b;
+  color: #ffffff;
+}
+
+.fp-btn--filled.fp-btn--system {
+  background-color: #424242;
+  border-color: #424242;
+  color: #ffffff;
+}
+
+.fp-btn--outline.fp-btn--primary {
+  background-color: #ffffff;
+  border-color: #ff9e1b;
+  color: #ff9e1b;
+}
+
+.fp-btn--outline.fp-btn--system {
+  background-color: #ffffff;
+  border-color: #424242;
+  color: #424242;
+}
+
+.fp-btn--ghost.fp-btn--primary,
+.fp-btn--text.fp-btn--primary {
+  background-color: transparent;
+  color: #ff9e1b;
+}
+
+.fp-btn--ghost.fp-btn--system,
+.fp-btn--text.fp-btn--system {
+  background-color: transparent;
+  color: #424242;
+}
+
+/* Hover / active */
+.fp-btn:not(.fp-btn--disabled):hover {
+  filter: brightness(1.05);
+}
+
+.fp-btn:not(.fp-btn--disabled):active {
+  transform: translateY(1px);
+  filter: brightness(0.97);
+}
+
+/* Disabled / loading */
+.fp-btn--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.fp-btn--loading .fp-btn-label {
+  opacity: 0.8;
+}
+
+.fp-btn-spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-top-color: rgba(255, 255, 255, 1);
+  animation: fp-spin 0.6s linear infinite;
+}
+
+@keyframes fp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fp-btn-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
