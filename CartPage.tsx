@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "./CartPage.css";
 
 export const CartPage: React.FC = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
+  const openMobileMenu = useCallback(() => setMobileMenuOpen(true), []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <div className="cart-page">
       {/* Header */}
       <header className="cart-header">
         <div className="cart-header-left">
+          {/* Mobile：漢堡鈕，點開顯示階層選單 */}
+          <button
+            type="button"
+            className="cart-header-hamburger"
+            aria-label="開啟選單"
+            onClick={openMobileMenu}
+          >
+            <span className="cart-header-hamburger-bar" />
+            <span className="cart-header-hamburger-bar" />
+            <span className="cart-header-hamburger-bar" />
+          </button>
+
           <div className="cart-logo-block">
             <div className="cart-logo" />
             <div className="cart-header-title">牧羊人經銷平台｜台灣站</div>
           </div>
 
-          <nav className="cart-nav">
+          <nav className="cart-nav" aria-label="主導覽">
             <button className="cart-nav-item">新品專區</button>
             <button className="cart-nav-item cart-nav-item--active">
               寵食品牌
@@ -42,6 +70,54 @@ export const CartPage: React.FC = () => {
           </div>
         </div>
       </header>
+
+      {/* Mobile 選單：遮罩 + 側邊層級選單 */}
+      <div
+        className={`cart-mobile-menu-overlay ${mobileMenuOpen ? "cart-mobile-menu-overlay--open" : ""}`}
+        aria-hidden={!mobileMenuOpen}
+        onClick={closeMobileMenu}
+      />
+      <aside
+        className={`cart-mobile-menu-drawer ${mobileMenuOpen ? "cart-mobile-menu-drawer--open" : ""}`}
+        aria-label="導覽選單"
+        aria-hidden={!mobileMenuOpen}
+      >
+        <div className="cart-mobile-menu-header">
+          <span className="cart-mobile-menu-title">選單</span>
+          <button
+            type="button"
+            className="cart-mobile-menu-close"
+            aria-label="關閉選單"
+            onClick={closeMobileMenu}
+          >
+            <span className="icon-close" />
+          </button>
+        </div>
+        <nav className="cart-mobile-menu-nav">
+          <div className="cart-mobile-menu-section">
+            <div className="cart-mobile-menu-section-title">商品分類</div>
+            <button type="button" className="cart-mobile-menu-item">
+              新品專區
+            </button>
+            <button
+              type="button"
+              className="cart-mobile-menu-item cart-mobile-menu-item--active"
+            >
+              寵食品牌
+            </button>
+            <button type="button" className="cart-mobile-menu-item cart-mobile-menu-item--with-children">
+              人食品牌
+              <span className="icon-arrow-right" />
+            </button>
+          </div>
+          <div className="cart-mobile-menu-section">
+            <div className="cart-mobile-menu-section-title">帳戶</div>
+            <button type="button" className="cart-mobile-menu-item">
+              登出
+            </button>
+          </div>
+        </nav>
+      </aside>
 
       {/* Main */}
       <main className="cart-main-container">
