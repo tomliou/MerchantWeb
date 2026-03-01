@@ -5,7 +5,7 @@ import { copyFileSync, existsSync } from "fs";
 
 export default defineConfig({
   // GitHub Pages 部署在子路徑，必須設定 base
-  base: "/Tom_Research/",
+  base: "/MerchantWeb/",
   plugins: [
     react(),
     // 建置後複製 index.html 為 404.html，讓 SPA 路由在 GitHub Pages 可正常運作

@@ -1,10 +1,10 @@
-# FastPass 購物車（Tom_Research）
+# MerchantWeb
 
 這是一個以 **React + Vite** 建立的靜態頁面專案，用來展示「牧羊人經銷平台｜台灣站」的 **購物車視覺稿**。
 目前著重在 **畫面與互動排版**，尚未串接真實 API 或後端。
 
 線上預覽（GitHub Pages）：
-https://tomliou.github.io/Tom_Research/
+https://tomliou.github.io/MerchantWeb/
 
 ---
 
@@ -76,7 +76,7 @@ https://tomliou.github.io/Tom_Research/
 - `CartPage.tsx`：整個購物車頁面的主元件（版型與區塊結構）
 - `CartPage.css`：對應的詳細版面與視覺樣式
 - `vite.config.ts`：
-  - 設定 `base: "/Tom_Research/"` 以支援 GitHub Pages 子路徑
+  - 設定 `base: "/MerchantWeb/"` 以支援 GitHub Pages 子路徑
   - build 完成後自動將 `index.html` 複製為 `404.html`，支援 SPA 路由刷新
 
 ---
@@ -109,8 +109,8 @@ npm run build
 
 ## 部署到 GitHub Pages（簡要說明）
 
-- Vite `base` 已設定為 `/Tom_Research/`，對應專案網址：  
-  `https://tomliou.github.io/Tom_Research/`
+- Vite `base` 已設定為 `/MerchantWeb/`，對應專案網址：  
+  `https://tomliou.github.io/MerchantWeb/`
 - 專案內有 GitHub Actions workflow：`.github/workflows/deploy-pages.yml`
   - 當 push 到 `main` 時：
     - 自動執行 `npm ci`、`npm run build`
