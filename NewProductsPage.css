@@ -1,0 +1,518 @@
+/* 新品專區頁面 - 延續 CartPage 變數與 header，此處僅新品區塊樣式 */
+
+.new-products-page {
+  font-family: "PingFang TC", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--gray-100, #f5f5f5);
+  color: var(--gray-800, #424242);
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+/* 導覽 Link 與 button 一致外觀 */
+.new-products-page .cart-nav .cart-nav-item {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.new-products-page .cart-nav a.cart-nav-item:hover {
+  color: #fff;
+}
+
+.new-products-page .cart-mobile-menu-item {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ----- 主內容 ----- */
+.new-products-main {
+  padding-top: 60px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 168px;
+  padding-right: 168px;
+}
+
+/* ----- 紅色促銷 Banner ----- */
+.new-products-banner {
+  background: #ff5353;
+  margin-bottom: 24px;
+}
+
+.new-products-banner-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 168px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ff5353;
+}
+
+.new-products-banner-icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.new-products-banner-text {
+  flex: 1;
+}
+
+.new-products-banner-title {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.new-products-banner-sub {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.new-products-banner-discount {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* ----- 分類標籤（依 Figma Selectable Chips node 18938:14152） ----- */
+.new-products-tabs-wrap {
+  margin-bottom: 24px;
+}
+
+.new-products-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.new-products-tab {
+  padding: 4px 8px;
+  border: 1px solid #757575;
+  border-radius: 14px;
+  background: transparent;
+  color: #757575;
+  font-family: "PingFang TC", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.new-products-tab:hover {
+  border-color: #616161;
+  color: #616161;
+}
+
+.new-products-tab--active {
+  border-color: var(--red-600);
+  color: var(--red-600);
+  background: #fff;
+}
+
+.new-products-tab--active:hover {
+  border-color: var(--red-600);
+  color: var(--red-600);
+  background: #fff;
+}
+
+/* ----- 商品區塊 Section ----- */
+.new-products-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.new-products-section {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.new-products-section-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 12px;
+  background: linear-gradient(to right, #eaf3fa 0%, #fff 100%);
+}
+
+.new-products-section-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brand-logo-small {
+  width: 44px;
+  height: 44px;
+  border-radius: 24px;
+  flex-shrink: 0;
+}
+
+.brand-logo-small.brand-logo--dcs {
+  background: linear-gradient(135deg, #6ac485 0%, #00a33c 100%);
+}
+
+.brand-logo-small.brand-logo--gb {
+  background: linear-gradient(135deg, #ffc700 0%, #f59e0b 100%);
+}
+
+.brand-logo-small.brand-logo--hm {
+  background: linear-gradient(135deg, #ff5353 0%, #e64545 100%);
+}
+
+.new-products-section-name {
+  font-family: "PingFang TC", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #424242;
+}
+
+.new-products-section-views {
+  font-family: "PingFang TC", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #757575;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.new-products-section-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  font-family: "PingFang TC", sans-serif;
+  font-size: 14px;
+  color: #757575;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.new-products-section-expand:hover {
+  color: #424242;
+}
+
+.new-products-section-expand-arrow {
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23757575' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* ----- 商品卡片 Grid ----- */
+.new-products-grid {
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+  flex-wrap: wrap;
+}
+
+.new-products-card {
+  flex: 1 1 334px;
+  min-width: 280px;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.new-products-card-parent {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.new-products-card-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #e8d5b5 0%, #d4a574 100%);
+}
+
+.new-products-card-title {
+  font-family: "PingFang TC", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #212121;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.new-products-card-criteria {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.new-products-criteria-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "PingFang TC", sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #757575;
+}
+
+.new-products-criteria-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.new-products-criteria-row--success .new-products-criteria-icon {
+  background: #00a33c;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23fff' d='M13.5 4.5l-7 7-3.5-3.5 1-1 2.5 2.5 6-6 1 1z'/%3E%3C/svg%3E");
+  background-size: 10px;
+  background-position: center;
+}
+
+.new-products-criteria-row--success .new-products-criteria-label {
+  color: #00a33c;
+}
+
+.new-products-criteria-row--warn .new-products-criteria-icon {
+  background: #9e9e9e;
+}
+
+.new-products-criteria-row--warn .new-products-criteria-label {
+  color: #9e9e9e;
+}
+
+.new-products-criteria-row--extra .new-products-criteria-icon {
+  background: #ffc700;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext x='8' y='12' text-anchor='middle' fill='%23fff' font-size='10' font-weight='bold'%3E!%3C/text%3E%3C/svg%3E");
+  background-size: 8px;
+  background-position: center;
+}
+
+.new-products-criteria-row--extra .new-products-criteria-label {
+  color: #9e9e9e;
+}
+
+.new-products-criteria-text {
+  color: #757575;
+}
+
+.new-products-card-weights {
+  display: flex;
+  gap: 12px;
+}
+
+.new-products-weight-chip {
+  border: 1px solid #757575;
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: transparent;
+  font-family: "PingFang TC", sans-serif;
+  font-size: 14px;
+  color: #757575;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.new-products-weight-chip:hover {
+  border-color: #424242;
+  color: #424242;
+}
+
+.new-products-weight-chip--active {
+  border-color: #757575;
+  background: #f5f5f5;
+  color: #757575;
+}
+
+.new-products-card-variants {
+  background: #fafafa;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.new-products-variant-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.new-products-variant-row:last-child {
+  border-bottom: none;
+}
+
+.new-products-variant-name {
+  flex: 1;
+  min-width: 0;
+  font-family: "PingFang TC", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #424242;
+}
+
+.new-products-variant-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.new-products-variant-price-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.new-products-variant-price {
+  font-family: "PingFang TC", sans-serif;
+  font-weight: 600;
+  color: #ff5353;
+}
+
+.new-products-variant-currency {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.new-products-variant-amount {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.new-products-variant-caption {
+  font-family: "PingFang TC", sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #9e9e9e;
+}
+
+.new-products-qty-input {
+  width: 88px;
+  height: 28px;
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.new-products-qty-input--disabled {
+  background: #e1e1e1;
+  border-color: #e1e1e1;
+}
+
+.new-products-qty-btn {
+  width: 28px;
+  flex-shrink: 0;
+  border: none;
+  background: #f5f5f5;
+  border-right: 1px solid #e1e1e1;
+  font-size: 14px;
+  color: #212121;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.new-products-qty-input--disabled .new-products-qty-btn {
+  background: #f5f5f5;
+  border-color: #e1e1e1;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.new-products-qty-value {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lato", "PingFang TC", sans-serif;
+  font-size: 14px;
+  color: #424242;
+  line-height: 1.6;
+}
+
+.new-products-qty-input--disabled .new-products-qty-value {
+  background: #f5f5f5;
+  color: #9e9e9e;
+}
+
+.new-products-qty-btn:last-of-type {
+  border-right: none;
+  border-left: 1px solid #e1e1e1;
+}
+
+/* 底部固定條使用 CartPage.css 的 .cart-footer 共用樣式 */
+
+/* RWD */
+@media (max-width: 1200px) {
+  .new-products-main,
+  .new-products-banner-inner,
+  .new-products-footer-inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .new-products-card {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .new-products-main,
+  .new-products-banner-inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .new-products-card {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+}

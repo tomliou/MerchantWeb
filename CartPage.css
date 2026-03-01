@@ -115,6 +115,16 @@ body {
     color: #fff;
     text-decoration: underline;
   }
+
+  .cart-nav a.cart-nav-item {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .cart-nav a.cart-nav-item--active {
+    text-decoration: underline;
+  }
   
   .cart-nav-item--with-arrow {
     display: flex;
@@ -415,6 +425,11 @@ body {
     font-weight: 600;
     color: var(--red-600);
     background: var(--red-100);
+  }
+
+  .cart-mobile-menu-nav a.cart-mobile-menu-item {
+    text-decoration: none;
+    color: inherit;
   }
 
   .cart-mobile-menu-item--with-children .icon-arrow-right {
@@ -1123,16 +1138,17 @@ body {
     cursor: pointer;
   }
   
-  /* 底部優惠折扣條（預留安全區域） */
+  /* 優惠券條（依 Figma Footer_Coupon node 18768:15621） */
   .footer-coupon-bar {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 64px;
     background: #fff;
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.06);
+    z-index: 9;
   }
-  
+
   .footer-coupon-inner {
     max-width: 1440px;
     margin: 0 auto;
@@ -1141,121 +1157,255 @@ body {
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .footer-coupon-left {
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  
-  .icon-ticket::before {
-    content: "";
-    font-family: "Font Awesome 6 Pro", system-ui;
-    font-size: 14px;
-    color: var(--gray-800);
+
+  .footer-coupon-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23212121' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z'/%3E%3Cpath d='M4 14h16a2 2 0 0 0 2-2v4a2 2 0 0 0-2 2H4a2 2 0 0 0-2-2v-4a2 2 0 0 0 2-2z'/%3E%3Cpath d='M8 8h.01'/%3E%3Cpath d='M8 18h.01'/%3E%3C/svg%3E") center/contain no-repeat;
   }
-  
+
   .footer-coupon-title {
+    font-family: "PingFang TC", sans-serif;
     font-size: 14px;
+    font-weight: 400;
+    color: #424242;
+    line-height: 1.4;
+  }
+
+  .footer-coupon-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    font-family: "PingFang TC", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #178cfa;
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  .footer-coupon-link:hover {
+    text-decoration: underline;
+  }
+
+  .footer-coupon-arrow {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23178cfa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E") center/contain no-repeat;
   }
   
-  /* 底部結帳欄（固定底部 + 安全區域給有劉海/Home 條的裝置） */
+  /* 底部結帳欄（依 Figma Footer Checkout Page node 18768:15622） */
   .cart-footer {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: var(--shadow-footer);
     background: #fff;
     padding-bottom: env(safe-area-inset-bottom, 0);
+    z-index: 10;
   }
-  
+
   .cart-footer-inner {
     max-width: 1440px;
     margin: 0 auto;
     padding: 12px 168px;
+    min-height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 8px;
   }
-  
-  .cart-footer-summary {
+
+  .cart-footer-left {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 12px;
+    min-width: 0;
   }
-  
-  .footer-summary-top {
+
+  .cart-footer-right {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .cart-footer a.btn-checkout-large {
+    text-decoration: none;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  /* 新品專區 footer 左側：優惠折扣 + 訂購總額（對齊 Figma） */
+  .cart-footer-left--offer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cart-footer-icon-mail {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23757575' stroke-width='2'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/%3E%3Cpolyline points='22,6 12,13 2,6'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+
+  .cart-footer-offer-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cart-footer-offer-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+
+  .cart-footer-offer-total {
+    font-size: 14px;
+    color: var(--gray-800);
+  }
+
+  .cart-footer-offer-hint {
+    font-size: 11px;
+    color: var(--gray-500);
+  }
+
+  .cart-footer-link {
+    border: none;
+    background: none;
+    color: var(--blue-600);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .cart-footer-link:hover {
+    text-decoration: underline;
   }
   
+  .cart-footer-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .footer-summary-top {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
   .footer-detail {
     border: none;
     background: none;
     display: flex;
     align-items: center;
     gap: 4px;
-    color: var(--gray-600);
+    font-family: "PingFang TC", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #757575;
     cursor: pointer;
+    line-height: 1.3;
   }
-  
+
   .chip-outline-green {
     border-radius: 4px;
     border: 1px solid var(--green-600);
     color: var(--green-600);
+    font-family: "PingFang TC", sans-serif;
     font-size: 10px;
+    font-weight: 400;
     padding: 2px 4px;
+    line-height: 1.4;
   }
-  
+
   .footer-summary-bottom {
     display: flex;
     align-items: flex-end;
     gap: 4px;
+    flex-wrap: wrap;
   }
-  
+
   .footer-label {
-    color: var(--gray-600);
-  }
-  
-  .footer-amount {
-    color: var(--red-600);
-  }
-  
-  .currency-small {
+    font-family: "PingFang TC", sans-serif;
     font-size: 12px;
+    font-weight: 400;
+    color: #757575;
+    line-height: 1.3;
+    width: 48px;
   }
-  
+
+  .footer-amount {
+    color: #ff5353;
+  }
+
+  .currency-small {
+    font-family: "PingFang TC", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
   .amount-large {
+    font-family: "PingFang TC", sans-serif;
     font-size: 16px;
     font-weight: 600;
+    line-height: 1.25;
   }
-  
+
   .footer-note {
-    color: var(--gray-600);
+    font-family: "PingFang TC", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #757575;
+    line-height: 1.3;
   }
-  
-  .btn-primary-large {
-    width: 300px;
-    border-radius: 4px;
-    border: none;
-    background: var(--red-600);
-    color: #fff;
-    padding: 10px 12px;
-    display: flex;
+
+  .btn-checkout-large {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  .icon-cart-white::before {
+    width: 300px;
+    min-width: 300px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 4px;
+    background: var(--red-600);
     color: #fff;
+    font-family: "PingFang TC", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-checkout-large:hover {
+    background: #e64545;
+  }
+
+  .btn-checkout-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='21' r='1'/%3E%3Ccircle cx='20' cy='21' r='1'/%3E%3Cpath d='M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6'/%3E%3C/svg%3E") center/contain no-repeat;
   }
   
   /* ========== RWD 響應式 ========== */
@@ -1361,8 +1511,7 @@ body {
       padding: 12px 16px;
     }
 
-    .btn-primary-large {
-      width: 200px;
+    .btn-checkout-large {
       min-width: 160px;
     }
   }
@@ -1443,7 +1592,7 @@ body {
     }
 
     .footer-coupon-bar {
-      bottom: calc(56px + env(safe-area-inset-bottom, 0));
+      bottom: 120px;
     }
 
     .footer-coupon-inner {
@@ -1457,20 +1606,32 @@ body {
       padding: 10px 12px;
       flex-wrap: wrap;
       gap: 12px;
+      min-height: 64px;
+    }
+
+    .cart-footer-left {
+      order: 1;
+      width: 100%;
+    }
+
+    .cart-footer-right {
+      order: 2;
+      width: 100%;
+      justify-content: flex-end;
     }
 
     .cart-footer-summary {
       width: 100%;
-      order: 1;
     }
 
-    .cart-footer .btn-primary-large {
+    .cart-footer .btn-checkout-large {
       width: 100%;
-      order: 2;
+      min-width: 0;
     }
 
-    .btn-primary-large {
+    .btn-checkout-large {
       width: 100%;
+      min-width: 0;
     }
   }
 

@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./CartPage.css";
 
 export const CartPage: React.FC = () => {
@@ -41,10 +42,10 @@ export const CartPage: React.FC = () => {
           </div>
 
           <nav className="cart-nav" aria-label="主導覽">
-            <button className="cart-nav-item">新品專區</button>
-            <button className="cart-nav-item cart-nav-item--active">
+            <Link to="/new-products" className="cart-nav-item">新品專區</Link>
+            <Link to="/" className="cart-nav-item cart-nav-item--active">
               寵食品牌
-            </button>
+            </Link>
             <button className="cart-nav-item cart-nav-item--with-arrow">
               人食品牌
               <span className="icon-arrow" />
@@ -96,15 +97,12 @@ export const CartPage: React.FC = () => {
         <nav className="cart-mobile-menu-nav">
           <div className="cart-mobile-menu-section">
             <div className="cart-mobile-menu-section-title">商品分類</div>
-            <button type="button" className="cart-mobile-menu-item">
+            <Link to="/new-products" className="cart-mobile-menu-item" onClick={closeMobileMenu}>
               新品專區
-            </button>
-            <button
-              type="button"
-              className="cart-mobile-menu-item cart-mobile-menu-item--active"
-            >
+            </Link>
+            <Link to="/" className="cart-mobile-menu-item cart-mobile-menu-item--active" onClick={closeMobileMenu}>
               寵食品牌
-            </button>
+            </Link>
             <button type="button" className="cart-mobile-menu-item cart-mobile-menu-item--with-children">
               人食品牌
               <span className="icon-arrow-right" />
@@ -437,46 +435,48 @@ export const CartPage: React.FC = () => {
         </div>
       </main>
 
-      {/* 下方優惠折扣條 */}
+      {/* 優惠券條（依 Figma Footer_Coupon） */}
       <div className="footer-coupon-bar">
         <div className="footer-coupon-inner">
           <div className="footer-coupon-left">
-            <span className="icon-ticket" />
+            <span className="footer-coupon-icon" aria-hidden />
             <span className="footer-coupon-title">優惠折扣</span>
           </div>
-          <button className="btn-link-with-icon">
-            查看或使用優惠 <span className="icon-arrow-right" />
+          <button type="button" className="footer-coupon-link">
+            查看或使用優惠
+            <span className="footer-coupon-arrow" aria-hidden />
           </button>
         </div>
       </div>
 
-      {/* 最底部結帳條 */}
+      {/* 最底部結帳條（與新品專區共用結構） */}
       <footer className="cart-footer">
         <div className="cart-footer-inner">
-          <div className="cart-footer-summary">
-            <div className="footer-summary-top">
-              <button className="footer-detail">
-                明細
-                <span className="icon-arrow-up" />
-              </button>
-              <span className="chip-outline-green">
-                已省下 $269
-              </span>
-            </div>
-            <div className="footer-summary-bottom">
-              <span className="footer-label">訂購總額</span>
-              <span className="footer-amount">
-                <span className="currency-small">$</span>
-                <span className="amount-large">1,376</span>
-              </span>
-              <span className="footer-note">(含運$60)</span>
+          <div className="cart-footer-left">
+            <div className="cart-footer-summary">
+              <div className="footer-summary-top">
+                <button type="button" className="footer-detail">
+                  明細
+                  <span className="icon-arrow-up" />
+                </button>
+                <span className="chip-outline-green">已省下 $269</span>
+              </div>
+              <div className="footer-summary-bottom">
+                <span className="footer-label">訂購總額</span>
+                <span className="footer-amount">
+                  <span className="currency-small">$</span>
+                  <span className="amount-large">1,376</span>
+                </span>
+                <span className="footer-note">(含運$60)</span>
+              </div>
             </div>
           </div>
-
-          <button className="btn-primary-large">
-            <span className="icon-cart-white" />
-            <span>前往結帳</span>
-          </button>
+          <div className="cart-footer-right">
+            <button type="button" className="btn-checkout-large">
+              <span className="btn-checkout-icon" aria-hidden />
+              <span>前往結帳</span>
+            </button>
+          </div>
         </div>
       </footer>
     </div>
